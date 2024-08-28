@@ -45,20 +45,26 @@ int main() {
 
     std::vector<int> sizes = {1000, 10000, 100000, 1000000};
 
-    std::vector<int> threads = {2, 4, 8, 16};
+    std::vector<int> threads = {1, 2, 4, 8, 16};
 
 
-    std::cout << "Array size | Threads | Time of execution (sec)\n";
-    std::cout << "---------------|--------|------------------------\n";
 
+//    for (int size : sizes) {
+//        for (int num_threads : threads) {
+//            double time_taken = run_test(size, num_threads);
+//            std::cout << size << "            | " << num_threads << "      | " << time_taken << " sec\n";
+//        }
+//    }
 
-    for (int size : sizes) {
-        for (int num_threads : threads) {
-            double time_taken = run_test(size, num_threads);
-            std::cout << size << "            | " << num_threads << "      | " << time_taken << " sec\n";
+    std::cout << "         1000          10000         100000        1000000\n";
+    for (int t : threads) {
+        std::cout << t << " threads ";
+        for (int size : sizes) {
+            double time_taken = run_test(size, t);
+            std::cout << time_taken << "s    ";
         }
+        std::cout << std::endl;
     }
-
     return 0;
 }
 
